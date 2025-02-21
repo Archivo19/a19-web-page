@@ -1,0 +1,98 @@
+---
+import { NETWORKS } from "../data/networks"
+
+const COMPANY = [
+    {
+        name: "About",
+        url: "/about/"
+    },
+    {
+        name: "Contact",
+        url: "/contact/"
+    }
+]
+
+const COMMUNITY = [
+    {
+        name: "Discord",
+        url: "/"
+    },
+]
+
+const LEGAL = [
+    {
+        name: "Privacy Policy",
+        url: "/privacy/"
+    },
+    {
+        name: "Terms & Conditions",
+        url: "/terms/"
+    }
+]
+---
+
+<footer class="bg-white dark:bg-gray-900">
+    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-between">
+            <div class="mb-6 md:mb-0">
+                <a href="/" class="flex items-center">
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">F19 Studios</span>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
+                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        {
+                            COMPANY.map(company => (
+                                <li>
+                                    <a href={company.url} class="hover:underline">{company.name}</a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Community</h2>
+                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        {
+                            COMMUNITY.map(community => (
+                                <li>
+                                    <a href={community.url} class="hover:underline">{community.name}</a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        {
+                            LEGAL.map(legal => (
+                                <li>
+                                    <a href={legal.url} class="hover:underline">{legal.name}</a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 File Nineteen Studios. All Rights Reserved.
+            </span>
+            <div class="flex mt-4 sm:justify-center sm:mt-0">
+                {
+                    NETWORKS.map(network => (
+                        <a href={network.href} class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                            <network.icon class="w-5 h-5"/>
+                            <span class="sr-only">{network.label}</span>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</footer>

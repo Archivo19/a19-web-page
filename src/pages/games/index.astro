@@ -1,0 +1,19 @@
+---
+import Carousel from "../../components/Carousel.astro";
+import OurGames from "../../components/OurGames.astro"
+import Layout from "../../layouts/Layout.astro"
+
+const GAMES = [
+    {
+        title: 'Feed Me',
+        description: 'Soon...',
+        image: '/image.jpg',
+        href: '/',
+    },
+];
+---
+
+<Layout>
+    <Carousel/>
+    <OurGames games={GAMES}/>
+</Layout>

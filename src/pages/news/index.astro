@@ -1,0 +1,29 @@
+---
+import OurNews from "../../components/OurNews.astro"
+import Layout from "../../layouts/Layout.astro"
+
+const NEWS = [
+    {
+        title: 'First news',
+        description: 'Our first news is very cool.',
+        image: '/image.jpg',
+        href: '/',
+    },
+    {
+        title: 'Second news',
+        description: 'Our second news is very cool.',
+        image: '/image.jpg',
+        href: '/',
+    },
+    {
+        title: 'Third news',
+        description: 'Our third news is very cool.',
+        image: '/image.jpg',
+        href: '/',
+    },
+];
+---
+
+<Layout>
+    <OurNews news={NEWS}/>
+</Layout>

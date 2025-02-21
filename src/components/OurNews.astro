@@ -1,0 +1,47 @@
+---
+import Indicator from "./Icons/Indicator.astro";
+
+const currentPath = Astro.url.pathname;
+
+const NEWS = Astro.props.news
+---
+
+<section class="flex flex-col justify-center items-center mt-8">
+    <div class="flex flex-row justify-center items-center gap-5">
+        <h1 class="text-5xl font-bold uppercase">Our News</h1>
+        <a href="/news/" class=`${currentPath === "/news/" ? "hidden" : ""}`><button class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-full text-sm px-4.5 py-2 mt-1 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 transition duration-300 ease cursor-pointer">View more</button></a>
+    </div>
+
+    {currentPath === "/news/" ? 
+        (
+            <p class="mt-5 font-normal text-gray-700 dark:text-gray-400">News about our games and more.</p>
+        ) : ""
+    }
+
+    <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7 mt-5 mb-8">
+        {
+            NEWS.map((news: { href: string; image: string; title: string; description: string; date?: string }) => (
+                <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-[300px]">
+                    <a href={news.href}>
+                        <img class="rounded-t-lg w-[300px] h-[300px]" src={news.image} alt={news.title} />
+                    </a>
+                    <div class="p-5">
+                        {currentPath === "/news/" ? 
+                        (<p>
+                            <p class="mb-0.5 font-normal text-gray-700 dark:text-gray-400">{news.date}</p>
+                        </p>) : ""
+                        }
+                        <a href={news.href}>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{news.title}</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{news.description}</p>
+                        <a href={news.href} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Read more
+                            <Indicator/>
+                        </a>
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+</section>

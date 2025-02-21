@@ -1,0 +1,26 @@
+---
+const GAMES = Astro.props.games
+---
+
+<section class="flex flex-col justify-center items-center mt-8">
+    <h1 class="text-5xl font-bold uppercase">Our Games</h1>
+    <p class="mt-5 font-normal text-gray-700 dark:text-gray-400">Our games developed over time.</p>
+
+    <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7 mt-5 mb-8">
+        {
+            GAMES.map((game: { href: string; image: string; title: string; description: string; }) => (
+                <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-[350px]">
+                    <a href={game.href}>
+                        <img class="rounded-t-lg w-[350px] h-[350px]" src={game.image} alt={game.title} />
+                    </a>
+                    <div class="p-5">
+                        <a href={game.href}>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{game.title}</h5>
+                        </a>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">{game.description}</p>
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+</section>
