@@ -1,5 +1,7 @@
 ---
-const GAMES = Astro.props.games
+import { getCollection } from "astro:content";
+
+const games = await getCollection('games');
 ---
 
 <section class="flex flex-col justify-center items-center mt-8">
@@ -8,19 +10,24 @@ const GAMES = Astro.props.games
 
     <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7 mt-5 mb-8">
         {
-            GAMES.map((game: { href: string; image: string; title: string; description: string; }) => (
-                <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-[350px]">
-                    <a href={game.href}>
-                        <img class="rounded-t-lg w-[350px] h-[350px]" src={game.image} alt={game.title} />
-                    </a>
-                    <div class="p-5">
-                        <a href={game.href}>
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{game.title}</h5>
+            games.map((game: { slug: any; data: any; }) => {
+                const  { slug, data } = game
+                const  { title, description, image } = data
+
+                return (
+                    <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-[350px]">
+                        <a href={`/games/${slug}`}>
+                            <img class="rounded-t-lg w-[350px] h-[350px]" src={`/${image}.jpg`} alt={title} transition:name={slug}/>
                         </a>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">{game.description}</p>
-                    </div>
-                </article>
-            ))
+                        <div class="p-5">
+                            <a href={`/games/${slug}`}>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+                            </a>
+                            <p class="font-normal text-gray-700 dark:text-gray-400">{description}</p>
+                        </div>
+                    </article>
+                )
+            })
         }
     </div>
 </section>

@@ -1,19 +1,8 @@
 ---
-import Banner from "../../components/Banner.astro";
 import OurGames from "../../components/OurGames.astro"
 import Layout from "../../layouts/Layout.astro"
-
-const GAMES = [
-    {
-        title: 'Feed Me',
-        description: 'Soon...',
-        image: '/image.jpg',
-        href: '/',
-    },
-];
 ---
 
 <Layout>
-    <Banner/>
-    <OurGames games={GAMES}/>
+    <OurGames/>
 </Layout>

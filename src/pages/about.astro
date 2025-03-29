@@ -75,17 +75,12 @@ const WORKERS = [
 ---
 
 <Layout>
-    <main class="flex flex-col items-center text-center">
+    <main class="flex flex-col items-center text-center mb-5">
         <h1 class="text-5xl font-bold mt-7">FILE NINETEEN STUDIOS</h1>
-
         <p class="mt-5 font-normal text-gray-700 dark:text-gray-400">Development Videogames Studio.</p>
 
-        <h1 class="text-4xl font-bold mt-7">FORMER</h1>
-
-        <hr class="bg-white h-0.5 w-[90%] max-w-[800px] mt-5 mb-5"/>
-
+        <h1 class="text-4xl font-bold mt-7 mb-5">FORMER</h1>
         <h1 class="text-3xl font-bold mb-5">CEO</h1>
-
         <div class="flex flex-row gap-7 max-w-[800px]">
             {
                 CEO.map(ceo => (
@@ -100,9 +95,7 @@ const WORKERS = [
                 ))
             }
         </div>
-
         <h1 class="text-3xl font-bold mt-5 mb-5">CO-CEOs</h1>
-
         <div class="flex flex-row gap-7 max-w-[800px]">
             {
                 COCEO.map(coceo => (
@@ -117,9 +110,7 @@ const WORKERS = [
                 ))
             }
         </div>
-
         <h1 class="text-3xl font-bold mt-5 mb-5">Interim CEO</h1>
-
         <div class="flex flex-row gap-7 max-w-[800px]">
             {
                 INTERIMCEO.map(interimceo => (
@@ -134,26 +125,20 @@ const WORKERS = [
                 ))
             }
         </div>    
-
         <h1 class="text-3xl font-bold mt-5 mb-5">Workers</h1>
-
         <div class="flex flex-row flex-wrap justify-center items-center gap-7 max-w-[900px]">
             {
                 WORKERS.map(worker => (
-                    
-                        <div class="overflow-hidden w-[200px] h-[200px] rounded-2xl">
-                            <img data-tooltip-target={worker.id} src={worker.image} class="w-[200px] h-auto rounded-2xl transition-all duration-300 ease hover:scale-[1.1]"/>
-                        </div>
-                        <div id={worker.id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
-                            <p class="text-[16px]">{worker.name}</p>
-                            <p class="text-[#ccc]">{worker.role}</p>
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-                    
+                    <div class="overflow-hidden w-[200px] h-[200px] rounded-2xl">
+                        <img data-tooltip-target={worker.id} src={worker.image} class="w-[200px] h-auto rounded-2xl transition-all duration-300 ease hover:scale-[1.1]"/>
+                    </div>
+                    <div id={worker.id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                        <p class="text-[16px]">{worker.name}</p>
+                        <p class="text-[#ccc]">{worker.role}</p>
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
                 ))
             }
         </div>
-
-        <hr class="bg-white h-0.5 w-[90%] max-w-[800px] mt-5 mb-5"/>
     </main>
 </Layout>

@@ -1,9 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import Indicator from "./Icons/Indicator.astro";
 
 const currentPath = Astro.url.pathname;
 
-const NEWS = Astro.props.news
+const news = await getCollection('news');
 ---
 
 <section class="flex flex-col justify-center items-center mt-8">
@@ -20,28 +21,28 @@ const NEWS = Astro.props.news
 
     <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7 mt-5 mb-8">
         {
-            NEWS.map((news: { href: string; image: string; title: string; description: string; date?: string }) => (
-                <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-[300px]">
-                    <a href={news.href}>
-                        <img class="rounded-t-lg w-[300px] h-[300px]" src={news.image} alt={news.title} />
-                    </a>
-                    <div class="p-5">
-                        {currentPath === "/news/" ? 
-                        (<p>
-                            <p class="mb-0.5 font-normal text-gray-700 dark:text-gray-400">{news.date}</p>
-                        </p>) : ""
-                        }
-                        <a href={news.href}>
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{news.title}</h5>
+            news.map((news: { slug: any; data: any; }) => {
+                const  { slug, data } = news
+                const  { title, description, image } = data
+
+                return (
+                    <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-[300px]">
+                        <a href={`/news/${slug}`}>
+                            <img class="rounded-t-lg w-[300px] h-[300px]" src={`/${image}.jpg`} alt={title} transition:name={slug}/>
                         </a>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{news.description}</p>
-                        <a href={news.href} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Read more
-                            <Indicator/>
-                        </a>
-                    </div>
-                </article>
-            ))
+                        <div class="p-5">
+                            <a href={`/news/${slug}`}>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{description}</p>
+                            <a href={`/news/${slug}`} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Read more
+                                <Indicator/>
+                            </a>
+                        </div>
+                    </article>
+                )
+            })
         }
     </div>
 </section>
