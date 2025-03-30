@@ -13,6 +13,7 @@ const games = defineCollection({
         title: z.string(),
         description: z.string(),
         image: z.string(),
+        date: z.string(),
     })
 })
 

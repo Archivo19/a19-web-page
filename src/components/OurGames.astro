@@ -6,7 +6,7 @@ const games = await getCollection('games');
 
 <section class="flex flex-col justify-center items-center mt-8">
     <h1 class="text-5xl font-bold uppercase">Our Games</h1>
-    <p class="mt-5 font-normal text-gray-700 dark:text-gray-400">Our games developed over time.</p>
+    <p class="mt-5 font-normal text-gray-400">Our games developed over time.</p>
 
     <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7 mt-5 mb-8">
         {
@@ -15,15 +15,15 @@ const games = await getCollection('games');
                 const  { title, description, image } = data
 
                 return (
-                    <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-[350px]">
+                    <article class="max-w-sm rounded-lg shadow-sm bg-[#3d1800] w-[350px]">
                         <a href={`/games/${slug}`}>
                             <img class="rounded-t-lg w-[350px] h-[350px]" src={`/${image}.jpg`} alt={title} transition:name={slug}/>
                         </a>
                         <div class="p-5">
                             <a href={`/games/${slug}`}>
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h5>
                             </a>
-                            <p class="font-normal text-gray-700 dark:text-gray-400">{description}</p>
+                            <p class="font-normal text-gray-400">{description}</p>
                         </div>
                     </article>
                 )

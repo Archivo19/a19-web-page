@@ -7,7 +7,7 @@ const currentPath = Astro.url.pathname;
 {
     SECTIONS.map(section => (
         <li>
-            <a href={section.href} title={section.desc} class={` transition-colors duration-300 ease hover:text-[#ccc] ${currentPath === section.href ? "text-[#9a9999] font-medium" : ""}`}>
+            <a href={section.href} title={section.desc} class={`transition-colors duration-300 ease hover:text-[#ccc] font-medium ${currentPath === section.href ? "text-[#9a9999]" : ""}`}>
                 {section.label}
             </a>
         </li>
