@@ -1,77 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import Worker from "../components/Worker.astro"
 
-const CEO = [
-    {
-        name: "Kozu",
-        role: "CEO, Designer",
-        image: "/staff/kozu.webp",
-        id: "kozu"
-    }
-]
-
-const COCEO = [
-    {
-        name: "Katto",
-        role: "CO-CEO, Web Developer",
-        image: "/staff/katto.webp",
-        id: "katto"
-    },
-    {
-        name: "Hister",
-        role: "CO-CEO, Developer",
-        image: "/staff/hister.webp",
-        id: "hister"
-    }
-]
-
-const INTERIMCEO = [
-    {
-        name: "Cam",
-        role: "Interim CEO, Designer",
-        image: "/staff/cam.webp",
-        id: "cam"
-    }
-]
-
-const WORKERS = [
-    {
-        name: "Leavy",
-        role: "Composer, Management",
-        image: "/staff/leavy.webp",
-        id: "leavy"
-    },
-    {
-        name: "Anchy",
-        role: "Management",
-        image: "/staff/anchy.webp",
-        id: "anchy"
-    },
-    {
-        name: "Rain",
-        role: "Voice Actor",
-        image: "/staff/rain.webp",
-        id: "rain"
-    },
-    {
-        name: "V",
-        role: "Designer",
-        image: "/staff/v.webp",
-        id: "v"
-    },
-    {
-        name: "Wasa",
-        role: "Composer, Storyteller",
-        image: "/staff/wasa.webp",
-        id: "wasa"
-    },
-    {
-        name: "Wachu",
-        role: "Animator",
-        image: "/staff/wachu.webp",
-        id: "wachu"
-    }
-]
+import { CEO, COCEO, INTERIMCEO, WORKERS } from "../data/about"
 ---
 
 <Layout>
@@ -84,14 +15,7 @@ const WORKERS = [
         <div class="flex flex-row gap-7 max-w-[800px]">
             {
                 CEO.map(ceo => (
-                    <div class="overflow-hidden w-[200px] h-[200px] rounded-2xl">
-                        <img data-tooltip-target={ceo.id} src={ceo.image} class="w-[200px] h-auto rounded-2xl transition-all duration-300 ease hover:scale-[1.1]"/>
-                    </div>
-                    <div id={ceo.id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
-                        <p class="text-[16px]">{ceo.name}</p>
-                        <p class="text-[#ccc]">{ceo.role}</p>
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
+                    <Worker worker={ceo} />
                 ))
             }
         </div>
@@ -99,14 +23,7 @@ const WORKERS = [
         <div class="flex flex-row gap-7 max-w-[800px]">
             {
                 COCEO.map(coceo => (
-                    <div class="overflow-hidden w-[200px] h-[200px] rounded-2xl">
-                        <img data-tooltip-target={coceo.id} src={coceo.image} class="w-[200px] h-auto rounded-2xl transition-all duration-300 ease hover:scale-[1.1]"/>
-                    </div>
-                    <div id={coceo.id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
-                        <p class="text-[16px]">{coceo.name}</p>
-                        <p class="text-[#ccc]">{coceo.role}</p>
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
+                    <Worker worker={coceo} />
                 ))
             }
         </div>
@@ -114,14 +31,7 @@ const WORKERS = [
         <div class="flex flex-row gap-7 max-w-[800px]">
             {
                 INTERIMCEO.map(interimceo => (
-                    <div class="overflow-hidden w-[200px] h-[200px] rounded-2xl">
-                        <img data-tooltip-target={interimceo.id} src={interimceo.image} class="w-[200px] h-auto rounded-2xl transition-all duration-300 ease hover:scale-[1.1]"/>
-                    </div>
-                    <div id={interimceo.id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
-                        <p class="text-[16px]">{interimceo.name}</p>
-                        <p class="text-[#ccc]">{interimceo.role}</p>
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
+                    <Worker worker={interimceo} />
                 ))
             }
         </div>    
@@ -129,14 +39,7 @@ const WORKERS = [
         <div class="flex flex-row flex-wrap justify-center items-center gap-7 max-w-[900px]">
             {
                 WORKERS.map(worker => (
-                    <div class="overflow-hidden w-[200px] h-[200px] rounded-2xl">
-                        <img data-tooltip-target={worker.id} src={worker.image} class="w-[200px] h-auto rounded-2xl transition-all duration-300 ease hover:scale-[1.1]"/>
-                    </div>
-                    <div id={worker.id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
-                        <p class="text-[16px]">{worker.name}</p>
-                        <p class="text-[#ccc]">{worker.role}</p>
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
+                    <Worker worker={worker} />
                 ))
             }
         </div>
