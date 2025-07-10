@@ -2,16 +2,21 @@
 import Layout from "../layouts/Layout.astro"
 import Worker from "../components/Worker.astro"
 
-import { CEO, COCEO, INTERIMCEO, WORKERS } from "../data/about"
+import { CEO, COCEO, WORKERS } from "../data/about"
+import Title from "../components/Title.astro"
+import Desc from "../components/Desc.astro"
+import Banner from "../components/Banner.astro"
+import MainPage from "../components/MainPage.astro"
+import MiniTitle from "../components/MiniTitle.astro"
 ---
 
-<Layout title="About" desc="About">
-    <main class="flex flex-col items-center text-center mb-5">
-        <h1 class="text-5xl font-bold mt-7">FILE NINETEEN STUDIOS</h1>
-        <p class="mt-5 font-normal text-gray-700 dark:text-gray-400">Development Videogames Studio.</p>
+<Layout title="Equipo" desc="Equipo">
+    <Banner class="h-[calc(100vh-450px)]"/>
+    <MainPage class="gap-5">
+        <Title class="text-5xl font-bold">ARCHIVO 19 STUDIO</Title>
+        <Desc>Estudio de desarrollo de videojuegos.</Desc>
 
-        <h1 class="text-4xl font-bold mt-7 mb-5">FORMER</h1>
-        <h1 class="text-3xl font-bold mb-5">CEO</h1>
+        <MiniTitle>CEO</MiniTitle>
         <div class="flex flex-row gap-7 max-w-[800px]">
             {
                 CEO.map(ceo => (
@@ -19,23 +24,15 @@ import { CEO, COCEO, INTERIMCEO, WORKERS } from "../data/about"
                 ))
             }
         </div>
-        <h1 class="text-3xl font-bold mt-5 mb-5">CO-CEOs</h1>
+        <MiniTitle>CO-CEOs</MiniTitle>
         <div class="flex flex-row gap-7 max-w-[800px]">
             {
                 COCEO.map(coceo => (
                     <Worker worker={coceo} />
                 ))
             }
-        </div>
-        <h1 class="text-3xl font-bold mt-5 mb-5">Interim CEO</h1>
-        <div class="flex flex-row gap-7 max-w-[800px]">
-            {
-                INTERIMCEO.map(interimceo => (
-                    <Worker worker={interimceo} />
-                ))
-            }
-        </div>    
-        <h1 class="text-3xl font-bold mt-5 mb-5">Workers</h1>
+        </div>   
+        <MiniTitle>Workers</MiniTitle>
         <div class="flex flex-row flex-wrap justify-center items-center gap-7 max-w-[900px]">
             {
                 WORKERS.map(worker => (
@@ -43,5 +40,5 @@ import { CEO, COCEO, INTERIMCEO, WORKERS } from "../data/about"
                 ))
             }
         </div>
-    </main>
+    </MainPage>
 </Layout>

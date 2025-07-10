@@ -1,23 +1,25 @@
 ---
 import { getCollection } from "astro:content";
+import Desc from "./Desc.astro";
+import Title from "./Title.astro";
 
 const games = await getCollection('games');
 ---
 
-<section class="flex flex-col justify-center items-center mt-8">
-    <h1 class="text-5xl font-bold uppercase">Our Games</h1>
-    <p class="mt-5 font-normal text-gray-400">Our games developed over time.</p>
+<section class="flex flex-col justify-center items-center gap-5">
+    <Title>Nuestros Juegos</Title>
+    <Desc>Nuestros juegos desarrollados a lo largo del tiempo.</Desc>
 
-    <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7 mt-5 mb-8">
+    <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7">
         {
             games.map((game: { slug: any; data: any; }) => {
                 const  { slug, data } = game
                 const  { title, description, image } = data
 
                 return (
-                    <article class="max-w-sm rounded-lg shadow-sm bg-[#3d1800] w-[350px]">
+                    <article class="max-w-sm bg-[#111] w-[350px]">
                         <a href={`/games/${slug}`}>
-                            <img class="rounded-t-lg w-[350px] h-[350px]" src={`/${image}.jpg`} alt={title} transition:name={slug}/>
+                            <img class="w-[350px] h-[350px]" src={`/${image}.png`} alt={title} transition:name={slug}/>
                         </a>
                         <div class="p-5">
                             <a href={`/games/${slug}`}>

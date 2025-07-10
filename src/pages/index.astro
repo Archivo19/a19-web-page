@@ -2,30 +2,68 @@
 import Banner from '../components/Banner.astro';
 import Layout from '../layouts/Layout.astro';
 import OurNews from '../components/OurNews.astro';
-
-const NEWS = [
-    {
-        title: 'First news',
-        description: 'Our first news is very cool.',
-        image: '/image.jpg',
-        href: '/',
-    },
-    {
-        title: 'Second news',
-        description: 'Our second news is very cool.',
-        image: '/image.jpg',
-        href: '/',
-    },
-    {
-        title: 'Third news',
-        description: 'Our third news is very cool.',
-        image: '/image.jpg',
-        href: '/',
-    },
-];
+import MainPage from '../components/MainPage.astro';
+import Down from '../components/Icons/Down.astro';
+import Desc from '../components/Desc.astro';
+import Worker from '../components/Worker.astro';
+import { CEO, COCEO } from '../data/about';
+import Title from '../components/Title.astro';
 ---
 
-<Layout title="Home" desc="Home">
-    <Banner/>
-    <OurNews news={NEWS}/>
+<Layout title="Inicio" desc="Inicio">
+    <Banner class="h-[calc(100vh-70px)]"/>
+    <MainPage class="gap-10">
+        <button id="down" class="bg-[#333] hover:bg-[#222222] transition-colors duration-300 ease text-white p-2 rounded-full cursor-pointer">
+            <Down class="w-6 h-6" />
+        </button>
+
+        <section id="about" class="flex flex-col items-center justify-center text-justify gap-5">
+            <Title>Sobre Nosotros</Title>
+            <div class="flex flex-row items-center justify-center gap-7">
+                <img src="/A19_Studio.png" class="max-w-[220px] w-full" />
+                <Desc class="max-w-[700px] text-[18px]">Archivo 19 Studios es un estudio de desarrollo de videojuegos enfocado en crear experiencias únicas, inmersivas y de alta calidad, combinando creatividad con una sólida base técnica. Nos dedicamos al desarrollo de videojuegos tanto en 2D como en 3D, abarcando desde pequeños proyectos experimentales hasta producciones con aspiraciones comerciales, adaptándonos a diferentes plataformas y públicos.</Desc>
+            </div>
+        </section>
+
+        <section class="flex flex-col items-center justify-center text-justify gap-7">
+            <Title>Conoce al Equipo</Title>
+            <div class="flex flex-row gap-7 max-w-[800px]">
+                {
+                    CEO.map(ceo => (
+                        <Worker worker={ceo} />
+                    ))
+                }
+                {
+                    COCEO.map(coceo => (
+                        <Worker worker={coceo} />
+                    ))
+                }
+            </div>
+            <a href="/about/" class={`cursor-pointer font-medium rounded-full text-sm px-4.5 py-2 bg-[#333] text-white hover:bg-[#222222] transition duration-300 ease`}>Ver más...</a>
+        </section> 
+        
+        <OurNews/>
+    </MainPage>
 </Layout>
+
+<script>
+    init();
+
+    document.addEventListener('astro:after-swap', init);
+
+    function init () {
+        const down = document.getElementById('down');
+        const section = document.getElementById('about');
+
+        if (down == null || section == null) return;
+
+        down.addEventListener('click', () => {
+            const y = section.getBoundingClientRect().top + window.pageYOffset;
+
+            window.scrollTo({
+                top: y - 20,
+                behavior: 'smooth'
+            });
+        });
+    }
+</script>

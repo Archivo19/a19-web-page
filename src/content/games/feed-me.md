@@ -1,7 +1,7 @@
 ---
 title: Feed Me
-description: Soon...
+description: Horror
 date: "2025"
-image: image
+image: feedme
 ---
-Soon...
+Proximamente...

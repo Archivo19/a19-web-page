@@ -1,27 +1,22 @@
 export const SECTIONS = [
     {
-        label: 'Home',
+        label: 'Inicio',
         href: '/',
-        desc: "Home"
+        desc: "Inicio"
     },
     {
-        label: 'News',
+        label: 'Noticias',
         href: '/news/',
-        desc: "News"
+        desc: "Noticias"
     },
     {
-        label: 'Games',
+        label: 'Juegos',
         href: '/games/',
-        desc: "Games"
+        desc: "Juegos"
     },
     {
-        label: 'About',
+        label: 'Equipo',
         href: '/about/',
-        desc: "About"
+        desc: "Equipo"
     },
-    {
-        label: 'Contact',
-        href: '/contact/',
-        desc: "Contact"
-    },
-  ]
+]

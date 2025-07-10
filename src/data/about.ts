@@ -2,7 +2,7 @@ export const CEO = [
     {
         name: "Kozu",
         role: "CEO, Designer",
-        image: "/staff/kozu.webp",
+        image: "https://unavatar.io/x/kozurat",
         id: "kozu"
     }
 ]
@@ -11,61 +11,46 @@ export const COCEO = [
     {
         name: "Katto",
         role: "CO-CEO, Web Developer",
-        image: "/staff/katto.webp",
+        image: "https://unavatar.io/x/SoyKatto1",
         id: "katto"
     },
     {
         name: "Hister",
         role: "CO-CEO, Developer",
-        image: "/staff/hister.webp",
+        image: "https://unavatar.io/x/backd00r__",
         id: "hister"
-    }
-]
-
-export const INTERIMCEO = [
-    {
-        name: "Cam",
-        role: "Interim CEO, Designer",
-        image: "/staff/cam.webp",
-        id: "cam"
     }
 ]
 
 export const WORKERS = [
     {
+        name: "Cam",
+        role: "Interim CEO, Designer",
+        image: "/staff/cam.jpg",
+        id: "cam"
+    },
+    {
         name: "Leavy",
         role: "Composer, Management",
-        image: "/staff/leavy.webp",
+        image: "https://unavatar.io/x/Leavyhh",
         id: "leavy"
-    },
-    {
-        name: "Anchy",
-        role: "Management",
-        image: "/staff/anchy.webp",
-        id: "anchy"
-    },
-    {
-        name: "Rain",
-        role: "Voice Actor",
-        image: "/staff/rain.webp",
-        id: "rain"
     },
     {
         name: "V",
         role: "Designer",
-        image: "/staff/v.webp",
+        image: "https://unavatar.io/x/TearsFromV",
         id: "v"
     },
     {
         name: "Wasa",
         role: "Composer, Storyteller",
-        image: "/staff/wasa.webp",
+        image: "https://unavatar.io/x/Whoiswasa",
         id: "wasa"
     },
     {
         name: "Wachu",
         role: "Animator",
-        image: "/staff/wachu.webp",
+        image: "https://unavatar.io/x/WachuEntity",
         id: "wachu"
     }
 ]

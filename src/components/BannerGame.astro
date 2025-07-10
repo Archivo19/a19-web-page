@@ -1,0 +1,37 @@
+<div class={`relative overflow-hidden ${Astro.props.class} w-full`}>
+    <img 
+        id="banner-image" 
+        src={`/${Astro.props.src}.png`}
+        alt="Banner" 
+        loading="eager" 
+        class="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+        style="mask-image: linear-gradient(to bottom, black 40%, transparent);"
+        onload="this.parentElement.classList.add('animate-fade-up')"
+    />
+    <div class="absolute inset-0 bg-black opacity-65 pointer-events-none"></div>
+
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <img src={`/${Astro.props.src}.png`} class="max-w-[350px] w-auto max-h-[80%] rounded-2xl" />
+    </div>
+</div>
+
+<style>
+    .animate-fade-up {
+        opacity: 1;
+    }
+
+    @keyframes fadeUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-up {
+        animation: fadeUp 1s ease-out forwards;
+    }
+</style>

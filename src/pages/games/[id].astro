@@ -1,6 +1,10 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro"
+import MainPage from "../../components/MainPage.astro"
+import Desc from "../../components/Desc.astro";
+import Title from "../../components/Title.astro";
+import BannerGame from "../../components/BannerGame.astro";
 
 export async function getStaticPaths() {
     const games = await getCollection('games');
@@ -19,14 +23,12 @@ const { Content } = await render(game)
 ---
 
 <Layout title={title} desc={description} image={image}>
-    <main class="flex flex-col justify-center items-center text-center">
-        <div class="w-[350px] h-[350px] overflow-hidden rounded-2xl">
-            <img src={`/${image}.jpg`} alt={title} transition:name={slug} class="w-full h-full transition duration-300 ease hover:scale-[1.1]"/>
-        </div>
-        <h1 class="text-4xl font-bold mt-5">{title}</h1>
-        <p class="mt-3 font-normal text-gray-700 dark:text-gray-400">{description} - {date}</p>
-        <div class="mt-5">
+    <BannerGame class="h-[calc(100vh-600px)]" src={image}/>
+    <MainPage class="gap-5">
+        <Title>{title}</Title>
+        <Desc>{description} - {date}</Desc>
+        <div>
             <Content/>
         </div>
-    </main>
+    </MainPage>
 </Layout>

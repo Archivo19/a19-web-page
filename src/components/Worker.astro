@@ -5,7 +5,7 @@ const { worker } = Astro.props
 <div class="overflow-hidden w-[200px] h-[200px] rounded-2xl">
     <img data-tooltip-target={worker.id} src={worker.image} class="w-[200px] h-auto rounded-2xl transition-all duration-300 ease hover:scale-[1.1]"/>
 </div>
-<div id={worker.id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+<div id={worker.id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 rounded-lg shadow-xs opacity-0 tooltip bg-[#333]">
     <p class="text-[16px]">{worker.name}</p>
     <p class="text-[#ccc]">{worker.role}</p>
     <div class="tooltip-arrow" data-popper-arrow></div>

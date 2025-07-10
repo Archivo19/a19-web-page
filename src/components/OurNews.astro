@@ -1,42 +1,39 @@
 ---
 import { getCollection } from "astro:content";
 import Indicator from "./Icons/Indicator.astro";
+import Title from "./Title.astro";
+import Desc from "./Desc.astro";
 
 const currentPath = Astro.url.pathname;
 
 const news = await getCollection('news');
 ---
 
-<section class="flex flex-col justify-center items-center mt-8">
-    <div class="flex flex-row justify-center items-center gap-5">
-        <h1 class="text-5xl font-bold uppercase">Our News</h1>
-        <a href="/news/" class=`${currentPath === "/news/" ? "hidden" : ""}`><button class=" border font-medium rounded-full text-sm px-4.5 py-2 mt-1 bg-[#b34600] text-white border-[#782f00] hover:bg-[#9f3e00] transition duration-300 ease cursor-pointer">View more</button></a>
-    </div>
+<section class="flex flex-col justify-center items-center gap-5">
+    <Title>Noticias</Title>
 
     {currentPath === "/news/" ? 
         (
-            <p class="mt-5 font-normal text-gray-400">News about our games and more.</p>
+            <Desc>Noticias o avances sobre nuestros juegos y más.</Desc>
         ) : ""
     }
 
-    <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7 mt-5 mb-8">
+    <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7">
         {
             news.map((news: { slug: any; data: any; }) => {
                 const  { slug, data } = news
                 const  { title, description, image } = data
 
                 return (
-                    <article class="max-w-sm rounded-lg shadow-sm bg-[#3d1800] w-[300px]">
+                    <article class="max-w-sm rounded-lg shadow-sm bg-[#111] w-[300px]">
                         <a href={`/news/${slug}`}>
-                            <img class="rounded-t-lg w-[300px] h-[300px]" src={`/${image}.jpg`} alt={title} transition:name={slug}/>
+                            <img class="rounded-t-lg w-[300px] h-[300px]" src={`/${image}.png`} alt={title} transition:name={`${currentPath === "/news/" ? slug : ""}`}/>
                         </a>
                         <div class="p-5">
-                            <a href={`/news/${slug}`}>
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h5>
-                            </a>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h5>
                             <p class="mb-3 font-normal text-gray-400">{description}</p>
-                            <a href={`/news/${slug}`} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-[#b34600] hover:bg-[#9f3e00] transition-colors duration-300 ease">
-                                Read more
+                            <a href={`/news/${slug}`} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-[#333] hover:bg-[#222222] transition-colors duration-300 ease">
+                                Leer más...
                                 <Indicator/>
                             </a>
                         </div>
@@ -45,4 +42,6 @@ const news = await getCollection('news');
             })
         }
     </div>
+
+    <a href="/news/" class={`cursor-pointer font-medium rounded-full text-sm px-4.5 py-2 mt-1 bg-[#333] text-white hover:bg-[#222222] transition duration-300 ease ${currentPath === "/news/" ? "hidden" : ""}`}>Ver más...</a>
 </section>

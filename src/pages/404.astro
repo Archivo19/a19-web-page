@@ -1,11 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import MainPage from "../components/MainPage.astro"
 ---
 
 <Layout title="404" desc="404">
-    <main class="h-[calc(100vh-60px)] flex flex-col justify-center items-center">
+    <MainPage class="text-center">
         <h1 class="text-5xl font-bold">404</h1>
         <p class="text-4xl font-semibold mt-5">Page not found</p>
         <p class="text-xl mt-4 text-[darkgrey] pl-5 pr-5">It seems that you have lost yourself. Return to <a class="text-white transition-colors duration-300 ease-in hover:text-[darkgrey]" href="/">home</a>.</p>
-    </main>
+    </MainPage>
 </Layout>

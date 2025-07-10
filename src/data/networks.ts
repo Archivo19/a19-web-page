@@ -1,21 +1,15 @@
-import Discord from "../components/Icons/Discord.astro"
-import Twitter from "../components/Icons/Twitter.astro"
-import Instagram from "../components/Icons/Instagram.astro"
+import X from "../components/Icons/X.astro"
+import KickStarter from "../components/Icons/KickStarter.astro"
 
 export const NETWORKS = [
     {
-        label: 'Twitter page',
-        icon: Twitter,
-        href: '#'
+        label: 'X/Twitter',
+        icon: X,
+        href: 'https://x.com/Archivo19Studio'
     },
     {
-        label: 'Instagram page',
-        icon: Instagram,
-        href: '#'
-    },
-    {
-        label: 'Discord community',
-        icon: Discord,
-        href: '#'
-    },
+        label: 'KickStarter',
+        icon: KickStarter,
+        href: 'https://www.kickstarter.com/projects/kozu/archivo-19-studio'
+    }
 ]

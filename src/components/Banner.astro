@@ -1,3 +1,86 @@
-<div class="relative h-[calc(100vh-60px)] overflow-hidden">
-    <img src="/image1.png" class="absolute w-full h-full object-cover top-0 left-0" alt="Image"/>
+---
+import Desc from "./Desc.astro";
+import Title from "./Title.astro";
+
+const isThat = Astro.url.pathname === "/";
+---
+
+<div class="relative overflow-hidden">
+    <img 
+        id="banner-image" 
+        src="/index/index1.png"
+        alt="Banner" 
+        loading="eager" 
+        class=`${Astro.props.class} w-full object-cover transition-opacity duration-1000 ease-in-out`
+        style="mask-image: linear-gradient(to bottom, black 40%, transparent);" 
+        onload="this.parentElement.classList.add('animate-fade-up')"
+    />
+    <div class="absolute inset-0 bg-black opacity-65 pointer-events-none"></div>
+
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <section class="max-w-[500px] flex flex-col items-center justify-center gap-4">
+            <img src="/A19_Studio.png" class="max-w-[350px] w-full mb-3" />
+            {isThat ? 
+                (
+                    <Title>ARCHIVO 19 STUDIO</Title>
+                    <Desc>Estudio de desarrollo de videojuegos.</Desc>
+                )
+            : ""}
+        </section>
+    </div>
 </div>
+
+<script>
+    init();
+
+    document.addEventListener('astro:after-swap', init);
+
+    function init() {
+        const images = [
+            "/index/index1.png",
+            "/index/index2.png",
+            "/index/index3.png",
+        ];
+        const bannerImage = document.getElementById('banner-image') as HTMLImageElement;
+        let current = 0;
+
+        function changeImage() {
+            bannerImage.classList.remove('opacity-100');
+            bannerImage.classList.add('opacity-0');
+
+            setTimeout(() => {
+                current = (current + 1) % images.length;
+                bannerImage.src = images[current];
+                bannerImage.classList.remove('opacity-0');
+                bannerImage.classList.add('opacity-100');
+            }, 1000);
+        }
+
+        bannerImage.addEventListener('load', () => {
+            bannerImage.classList.add('opacity-100');
+        });
+
+        setInterval(changeImage, 5000);
+    }
+</script>
+
+<style>
+    .animate-fade-up {
+        opacity: 1;
+    }
+
+    @keyframes fadeUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-up {
+        animation: fadeUp 1s ease-out forwards;
+    }
+</style>
