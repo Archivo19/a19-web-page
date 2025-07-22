@@ -18,20 +18,20 @@ const isGame = Astro.url.pathname.startsWith("/games/") && Astro.url.pathname !=
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/icon.png" />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>{title}</title>
-		<meta name="title" content=`${Astro.props.class} - A19 Studio` />
+		<title>{title} - A19 Studio</title>
+		<meta name="title" content=`${title} - A19 Studio` />
 		<meta name="description" content={desc} />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={'https://a19.bangame.tech' + Astro.url.pathname} />
-		<meta property="og:title" content=`${Astro.props.class} - A19 Studio` />
+		<meta property="og:title" content=`${title} - A19 Studio` />
 		<meta property="og:description" content={desc} />
 		<meta property="og:image" content={image} />
 		<meta property="og:site_name" content="Archivo 19 Studio" />
@@ -39,9 +39,9 @@ const isGame = Astro.url.pathname.startsWith("/games/") && Astro.url.pathname !=
 
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={'https://a19.bangame.tech' + Astro.url.pathname} />
-		<meta name="twitter:site" content="@F19Studios" />
+		<meta name="twitter:site" content="@Archivo19Studio" />
 		<meta name="twitter:creator" content="@SoyKatto1" />
-		<meta property="twitter:title" content=`${Astro.props.class} - A19 Studio` />
+		<meta property="twitter:title" content=`${title} - A19 Studio` />
 		<meta property="twitter:description" content={desc} />
 		<meta property="twitter:image" content={image} />
 

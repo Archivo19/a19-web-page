@@ -18,7 +18,7 @@ const news = await getCollection('news');
         ) : ""
     }
 
-    <div class="flex flex-row flex-wrap max-w-[1200px] justify-center items-center gap-7">
+    <div class="flex flex-row flex-wrap max-w-[1200px] justify-center text-left items-center gap-7">
         {
             news.map((news: { slug: any; data: any; }) => {
                 const  { slug, data } = news

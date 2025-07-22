@@ -21,14 +21,14 @@ const { title, description, image } = data
 const { Content } = await render(news)
 ---
 
-<Layout title={title} desc={description} image={image}>
+<Layout title={title} desc={description} image={`/${image}.png`}>
     <MainPage class="gap-5">
         <Title>{title}</Title>
         <Desc>{description}</Desc>
         <div class="w-[350px] h-[350px] overflow-hidden rounded-2xl">
             <img src={`/${image}.png`} alt={title} transition:name={slug} class="w-full h-full"/>
         </div>
-        <div class="prose prose-invert max-w-[800px] w-full">
+        <div class="prose prose-invert max-w-[800px] w-full text-justify">
             <Content/>
         </div>
     </MainPage>

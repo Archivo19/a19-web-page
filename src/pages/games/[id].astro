@@ -22,12 +22,12 @@ const { title, description, image, date } = data
 const { Content } = await render(game)
 ---
 
-<Layout title={title} desc={description} image={image}>
+<Layout title={title} desc={description} image={`/${image}.png`}>
     <BannerGame class="h-[calc(100vh-600px)]" src={image}/>
     <MainPage class="gap-5">
         <Title>{title}</Title>
         <Desc>{description} - {date}</Desc>
-        <div>
+        <div class="prose prose-invert max-w-[800px] w-auto text-justify">
             <Content/>
         </div>
     </MainPage>

@@ -5,28 +5,26 @@ import Title from "./Title.astro";
 const isThat = Astro.url.pathname === "/";
 ---
 
-<div class="relative overflow-hidden">
+<div class={`relative overflow-hidden ${Astro.props.class} w-full`}>
     <img 
         id="banner-image" 
         src="/index/index1.png"
         alt="Banner" 
         loading="eager" 
-        class=`${Astro.props.class} w-full object-cover transition-opacity duration-1000 ease-in-out`
-        style="mask-image: linear-gradient(to bottom, black 40%, transparent);" 
+        class="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+        style="mask-image: linear-gradient(to bottom, black 40%, transparent);"
         onload="this.parentElement.classList.add('animate-fade-up')"
     />
     <div class="absolute inset-0 bg-black opacity-65 pointer-events-none"></div>
 
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-        <section class="max-w-[500px] flex flex-col items-center justify-center gap-4">
-            <img src="/A19_Studio.png" class="max-w-[350px] w-full mb-3" />
-            {isThat ? 
-                (
-                    <Title>ARCHIVO 19 STUDIO</Title>
-                    <Desc>Estudio de desarrollo de videojuegos.</Desc>
-                )
-            : ""}
-        </section>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 mt-[60px] gap-5">
+        <img src="/logo.png" class="max-w-[350px] w-auto max-h-[80%]" />
+        {isThat ? 
+            (
+                <Title>ARCHIVO 19 STUDIO</Title>
+                <Desc>Estudio de desarrollo de videojuegos.</Desc>
+            )
+        : ""}
     </div>
 </div>
 

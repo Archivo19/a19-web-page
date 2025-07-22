@@ -10,7 +10,7 @@ import { CEO, COCEO } from '../data/about';
 import Title from '../components/Title.astro';
 ---
 
-<Layout title="Inicio" desc="Inicio">
+<Layout title="Inicio" desc="Inicio" image="/icon.png">
     <Banner class="h-[calc(100vh-70px)]"/>
     <MainPage class="gap-10">
         <button id="down" class="bg-[#333] hover:bg-[#222222] transition-colors duration-300 ease text-white p-2 rounded-full cursor-pointer">
@@ -19,15 +19,15 @@ import Title from '../components/Title.astro';
 
         <section id="about" class="flex flex-col items-center justify-center text-justify gap-5">
             <Title>Sobre Nosotros</Title>
-            <div class="flex flex-row items-center justify-center gap-7">
-                <img src="/A19_Studio.png" class="max-w-[220px] w-full" />
-                <Desc class="max-w-[700px] text-[18px]">Archivo 19 Studios es un estudio de desarrollo de videojuegos enfocado en crear experiencias únicas, inmersivas y de alta calidad, combinando creatividad con una sólida base técnica. Nos dedicamos al desarrollo de videojuegos tanto en 2D como en 3D, abarcando desde pequeños proyectos experimentales hasta producciones con aspiraciones comerciales, adaptándonos a diferentes plataformas y públicos.</Desc>
+            <div class="flex flex-row flex-wrap items-center justify-center gap-7">
+                <img src="/logo.png" class="max-w-[220px] w-full" />
+                <Desc class="max-w-[700px] w-full text-[18px]">Archivo 19 Studios es un estudio de desarrollo de videojuegos enfocado en crear experiencias únicas, inmersivas y de alta calidad, combinando creatividad con una sólida base técnica. Nos dedicamos al desarrollo de videojuegos tanto en 2D como en 3D, abarcando desde pequeños proyectos experimentales hasta producciones con aspiraciones comerciales, adaptándonos a diferentes plataformas y públicos.</Desc>
             </div>
         </section>
 
-        <section class="flex flex-col items-center justify-center text-justify gap-7">
+        <section class="flex flex-col items-center justify-center gap-7">
             <Title>Conoce al Equipo</Title>
-            <div class="flex flex-row gap-7 max-w-[800px]">
+            <div class="flex flex-row flex-wrap items-center justify-center gap-7 max-w-[800px]">
                 {
                     CEO.map(ceo => (
                         <Worker worker={ceo} />
